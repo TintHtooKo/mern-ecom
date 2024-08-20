@@ -1,0 +1,153 @@
+/* about hero start */
+.about {
+    position: relative;
+    height: 50vh;
+    width: 100%;
+  } 
+  
+  .about-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+  }
+  
+  .about-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1; 
+  }
+  
+  .about-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white; /* Example text color */
+    z-index: 1; /* Ensure content appears above the overlay */
+  }
+  
+  .about-content h1 {
+    font-size: 4rem; /* Example font size */
+    text-align: center;
+  }
+  
+  .about-content p {
+    font-size: 20px;
+    color: rgb(199, 199, 199);
+    text-align: center;
+  }
+/* about hero end */
+
+/* ------------------------------------------------------------------------------- */
+
+/* story start */
+.story{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin: 100px;
+    gap: 100px;
+}
+
+.story-detail{
+    width: 50%;
+}
+
+.story-detail h1{
+    color: #717FE0;
+    font-weight: 700;
+}
+
+.story-detail p{
+    color: rgb(133, 133, 133);
+}
+
+.about-img{
+    overflow: hidden;
+}
+
+.story div img{
+    width: 400px;
+    transition: transform 0.4s ease;
+}
+
+.story div img:hover{
+    transform: scale(1.1);
+}
+
+
+
+/* story end */
+
+  
+  @media screen and (max-width: 992px) {
+    /* about hero start */
+    .about {
+        height: 70vh;
+      }
+
+    
+      .about-content h1 {
+        font-size: 2.5rem;
+      }
+    
+      .about-content p {
+        font-size: 18px;
+      }
+      /* about hero end */
+
+      /* --------------------------------------------------------------------------- */
+
+      /* story start */
+      .story{
+        margin: 50px;
+        flex-direction: column;
+      }
+
+      .story-detail{
+        width: 100%;
+      }
+
+      /* story end */
+  }
+  
+  @media screen and (max-width: 576px) {
+    /* about hero start */
+    .about-content h1 {
+        font-size: 2rem;
+        margin-top: 60px;
+      }
+    
+      .about-content p {
+        font-size: 12px;
+        width: 80%;
+        text-align: center;
+        margin-bottom: 5px;
+      }
+      /* about hero end */
+
+      /* ---------------------------------------------------------------------------------- */
+
+      /* story start */
+      .story div img{
+        width: 250px;
+    }
+
+    .story-detail p{
+        font-size: 14px;
+    }
+    /* story end */
+
+  }
+  

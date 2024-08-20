@@ -1,0 +1,152 @@
+.quantity-container input {
+    width: 40px;
+    outline: none;
+    border: 1px solid rgb(216, 216, 216);
+    padding: 0 5px;
+}
+
+.quantity-btn-p, .quantity-btn-m {
+    border: none;
+    padding: 0 5px;
+}
+
+.quantity-btn-m:hover, .quantity-btn-p:hover {
+    background-color: rgb(179, 179, 179);
+}
+
+input[type="number"] {
+    text-align: center; /* Centers the placeholder text */
+}
+
+.table thead th, .table tbody td {
+    vertical-align: middle; /* Ensures vertical alignment */
+    text-align: center; /* Centers the text horizontally */
+}
+
+.cart-list table tbody tr th img{
+    width: 70px;
+}
+
+.remove button{
+    border: none;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.detail button{
+    border: none;
+    background-color: #f0ff18;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.total{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 40px;
+    border: 1px solid rgb(216, 216, 216);
+    padding: 50px 30px;
+    width: 500px;
+}
+
+.cart-list{
+    width: 100%;
+}
+
+.detail a{
+    text-decoration: none;
+    background-color: #717FE0;
+    color: white;
+    padding: 5px;
+}
+
+.cart{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.total h4{
+    font-weight: 700;
+}
+
+.total span{
+    color: rgb(158, 158, 158);
+}
+
+.total div{
+    display: flex;
+    gap: 10px;
+}
+
+.total div input{
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 20px;
+    outline: none;
+    padding: 5px 10px;
+}
+
+.total div button{
+    border: none;
+    color: white;
+    background-color: #717FE0;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.total a{
+    text-decoration: none;
+    color: white;
+    background-color: #717FE0;
+    padding: 10px 40px;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .cart{
+        flex-direction: column;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+        .mob-mode {
+            display: none;
+        }
+
+        .cart-list table tbody tr th img{
+            width: 40px;
+        }
+
+        .cart-list table thead tr th{
+            font-size: 12px;
+        }
+
+        .quantity-container input {
+            width: 30px;
+        }
+
+        .cart-list table tbody tr td{
+            font-size: 12px;
+        }
+
+        .total{
+            width: 300px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .total div input{
+            width: 170px;
+        }
+        
+
+
+}
+

@@ -1,0 +1,75 @@
+.quantity-container input {
+    width: 50px;
+    outline: none;
+    border: 1px solid rgb(216, 216, 216);
+    padding: 0 5px;
+}
+
+.quantity-btn-p, .quantity-btn-m {
+    border: none;
+    padding: 0 5px;
+}
+
+.quantity-btn-m:hover, .quantity-btn-p:hover {
+    background-color: rgb(179, 179, 179);
+}
+
+input[type="number"] {
+    text-align: center; /* Centers the placeholder text */
+}
+
+.table thead th, .table tbody td {
+    vertical-align: middle; /* Ensures vertical alignment */
+    text-align: center; /* Centers the text horizontally */
+}
+
+.wish-btn .btn-1{
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: #717FE0;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+
+.wish-btn .btn-2{
+    text-decoration: none;
+    border: none;
+    padding: 5px 10px;
+    color: rgb(77, 77, 77);
+    background-color: #717FE0;
+    border-radius: 5px;
+    margin: 0 10px;
+    color: white;
+}
+
+.wish-del button{
+    border: 1px solid rgb(206, 206, 206);
+    padding: 5px 10px;
+    border-radius: 50%;
+    color: rgb(212, 212, 212);
+}
+
+.wish-del button:hover{
+    color: red;
+    border:1px solid red;
+}
+
+.cus-table{
+    width: 70%;
+    margin: 0 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .cus-table{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .cus-table{
+        width: 100%;
+        margin: 0;
+    }
+}

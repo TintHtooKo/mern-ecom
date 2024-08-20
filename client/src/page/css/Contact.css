@@ -1,0 +1,229 @@
+/* content hero start */
+.content {
+    position: relative;
+    height: 50vh;
+    width: 100%;
+  } 
+  
+  .content-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+  }
+  
+  .content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1; 
+  }
+  
+  .content-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white; /* Example text color */
+    z-index: 1; /* Ensure content appears above the overlay */
+  }
+  
+  .content-content h1 {
+    font-size: 4rem; /* Example font size */
+    text-align: center;
+  }
+  
+  .content-content p {
+    font-size: 20px;
+    color: rgb(199, 199, 199);
+    text-align: center;
+  }
+/* content hero end */
+
+.msg{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 90px 100px;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.box h4{
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.box form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.box form input{
+    width: 400px;
+    height: 40px;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 5px;
+}
+
+.box form textarea{
+    width: 400px;
+    height: 200px;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 5px;
+}
+
+.box form button{
+    color: white;
+    background-color: #717FE0;
+    padding: 10px 70px;
+    border-radius: 30px;
+    border: none;
+}
+
+.add{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.address{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.address i{
+    color: gray;
+}
+
+.address p{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.address span{
+    color: rgb(136, 136, 136);
+}
+
+.phone{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.phone i{
+    color: gray;
+}
+
+.phone p{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.phone span{
+    color: rgb(136, 136, 136);
+}
+
+.mail{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.mail i{
+    color: gray;
+}
+
+.mail p{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.mail span{
+    color: rgb(136, 136, 136);
+}
+
+@media screen and (max-width: 768px) {
+    /* content hero start */
+    .content {
+        height: 70vh;
+      }
+
+      hr{
+        display: block;
+    }
+    
+      .content-content h1 {
+        font-size: 2.5rem;
+      }
+    
+      .content-content p {
+        font-size: 18px;
+      }
+    /* content hero end */
+
+    .msg{
+        margin: 90px 30px;
+        gap: 40px;
+    }
+    .box form input{
+        width: 300px;
+    }
+
+    .box form textarea{
+        width: 300px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    /* content hero start */
+    .content-content h1 {
+        font-size: 2rem;
+        margin-top: 60px;
+      }
+    
+      .content-content p {
+        font-size: 12px;
+        width: 80%;
+        text-align: center;
+        margin-bottom: 5px;
+      }
+      /* content hero end */
+
+      .msg{
+        flex-direction: column;
+    }
+
+    .box h4{
+        font-size: 1.5rem;
+    }
+}

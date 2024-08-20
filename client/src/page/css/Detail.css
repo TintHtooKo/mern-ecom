@@ -1,0 +1,97 @@
+.detail{
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.detail img{
+    width: 350px;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.detail img:hover{
+    transform: scale(1.1);
+}
+
+.detail-img{
+    overflow: hidden;
+}
+
+.bradcrumb{
+    color: rgb(179, 179, 179);
+}
+
+.info{
+    width: 50%;
+}
+
+.info div{
+    display: flex;
+    gap: 20px;
+}
+
+.info div button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.info div button i{
+    font-size: 25px;
+}
+
+.info div button i:hover{
+    color: #717FE0;
+}
+
+.detail-desc{
+    margin: 30px 110px;
+}
+
+.detail-desc p{
+    color: rgb(161, 161, 161);
+}
+
+@media screen and (max-width: 768px) {
+    .detail img{
+        width: 250px;
+    }
+
+    .detail-desc{
+        margin: 30px 50px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .detail{
+        flex-direction: column;
+        margin: 30px 10px;
+        gap: 30px;
+    }
+
+    .detail img{
+        width: 100%;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .short-desc{
+        font-size: 13px;
+    }
+
+    .detail-desc{
+        margin: 30px 10px;
+    }
+
+    .detail-desc p{
+        font-size: 13px;
+    }
+}

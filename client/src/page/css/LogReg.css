@@ -1,0 +1,84 @@
+.shadow-box {
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    max-width: 500px; 
+    margin: 50px auto; 
+}
+
+.close {
+    cursor: pointer;
+}
+
+
+
+.show-alert{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+}
+
+.show-alert {
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.show-alert.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.close i{
+    border: 1px solid rgb(119, 119, 119);
+    padding: 5px;
+    color: black;
+    border-radius: 40%;
+}
+
+
+.login form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 50px 0;
+}
+
+.login form input{
+    width: 400px;
+    height: 40px;
+    outline: none;
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 1px solid rgb(216, 216, 216);
+    border-right: 1px solid rgb(216, 216, 216);
+    border-radius: 30px;
+    margin: 10px 0;
+}
+
+.login form button{
+    width: 300px;
+    border: none;
+    background-color: #717FE0;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media screen and (max-width: 425px) {
+    .login form input{
+        width: 300px;
+    }
+
+    .shadow-box{
+        box-shadow: none;
+    }
+
+}

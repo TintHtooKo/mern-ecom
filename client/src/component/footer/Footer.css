@@ -1,0 +1,111 @@
+.footer {
+    background-color: #222222;
+    padding: 20px 0; /* Added padding to ensure content spacing */
+    position: relative;
+    width: 100%;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto; /* Centered the footer content */
+    gap: 20px;
+    max-width: 1200px; /* Optional: Limits the maximum width for better alignment */
+}
+
+.useful-link {
+    color: white;
+    padding: 20px 0;
+}
+
+.useful-link ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; /* Removed default padding */
+}
+
+.useful-link ul li {
+    padding: 10px 0;
+}
+
+.useful-link ul li a {
+    text-decoration: none;
+    color: rgb(158, 158, 158);
+}
+
+.useful-link ul li a:hover {
+    color: #717FE0;
+}
+
+.touch {
+    color: white;
+    padding: 35px 0;
+}
+
+.touch p {
+    color: rgb(190, 190, 190);
+    font-size: 14px;
+    width: 70%;
+}
+
+.touch div {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.touch div a i {
+    color: white;
+}
+
+.touch div a i:hover {
+    color: #717FE0;
+}
+
+.copyright {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    padding: 20px 0;
+}
+
+.sub {
+    color: white;
+    padding: 35px 0;
+}
+
+.sub input {
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid #717FE0;
+    color: white;
+    width: 100%; /* Ensures full width input field */
+}
+
+.sub button {
+    padding: 10px 40px;
+    border: none;
+    border-radius: 30px;
+    background-color: #717FE0;
+    color: white;
+    cursor: pointer; /* Added cursor for better UX */
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        margin-left: 40px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sub input{
+        width: 80%;
+    }
+}
