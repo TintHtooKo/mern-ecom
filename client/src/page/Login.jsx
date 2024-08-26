@@ -25,7 +25,7 @@ export default function Login() {
           type:'LOGIN',
           payload:{user : login.data.user, cartCount : cartRes.data.count}
         })
-        navigate('/shop')
+        navigate('/shop') 
       }
       setLoading(false)
     } catch (e) {

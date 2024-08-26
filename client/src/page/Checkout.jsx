@@ -6,9 +6,8 @@ import Success from '../component/alert/Success';
 import { AuthContext } from '../context/AuthContext';
 
 export default function Checkout() {
-    const {dispatch} = useContext(AuthContext)
+    const { dispatch } = useContext(AuthContext);
 
-    // cartItems and totalPrice ကို cart ထဲက u သုံးလိူ့
     const location = useLocation();
     const { cartItems, totalPrice } = location.state || { cartItems: [], totalPrice: 0 };
 
@@ -17,8 +16,30 @@ export default function Checkout() {
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
+    const [userData, setUserData] = useState({
+        fullname: '',
+        email: '',
+        address: '',
+        phone: ''
+    });
     const [selectedPayment, setSelectedPayment] = useState('');
     const [alert, setAlert] = useState(false);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                let { data } = await axios.get('/user/me');
+                setUserData(data);
+                setFullname(data.fullname || '');
+                setEmail(data.email || '');
+                setAddress(data.address || '');
+                setPhone(data.phone || '');
+            } catch (err) {
+                console.error("Error fetching user data:", err);
+            }
+        };
+        fetchUser();
+    }, []);
 
     useEffect(() => {
         const fetchPayment = async () => {
@@ -35,23 +56,19 @@ export default function Checkout() {
     const checkoutSubmit = async (e) => {
         e.preventDefault();
 
-
-        // Validate that a payment method is selected
         if (!selectedPayment) {
             console.log('Please select a payment method.');
             return;
         }
 
-        // Validate other form fields if necessary
         if (!fullname || !email || !address || !phone) {
             console.log('Please fill in all the required fields.');
             return;
         }
 
         try {
-            // Constructing the cart items to have the correct format
             const formattedCartItems = cartItems.map(item => ({
-                item: item._id // Assuming each cart item has an `_id` field
+                item: item._id
             }));
 
             const data = {
@@ -60,8 +77,9 @@ export default function Checkout() {
                 address,
                 phone,
                 payment: selectedPayment,
-                cartItems: formattedCartItems, // Pass the formatted cart items
-                totalPrice
+                cartItems: formattedCartItems,
+                totalPrice,
+                userId: userData._id
             };
 
             let res = await axios.post('/checkout/create', data);
@@ -76,7 +94,14 @@ export default function Checkout() {
                 dispatch({ type: "UPDATE_CART_COUNT", payload: 0 });
             }
         } catch (error) {
-            console.error("Checkout error:", error.response.data);
+            if (error.response && error.response.data) {
+                console.error("Checkout error:", error.response.data);
+                if (error.response.data.error.includes('userId')) {
+                    console.error("User is not authenticated or userId is missing.");
+                }
+            } else {
+                console.error("Unexpected error:", error);
+            }
         }
     };
 
@@ -126,7 +151,7 @@ export default function Checkout() {
                                 onChange={(e) => setSelectedPayment(e.target.value)}
                                 required
                             >
-                                <option value="" >Select Payment</option> {/* Default empty option */}
+                                <option value="" >Select Payment</option>
                                 {payment.map((item) => (
                                     <option key={item._id} value={item._id}>
                                         {item.payment}

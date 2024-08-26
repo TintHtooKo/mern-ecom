@@ -108,6 +108,19 @@ input[type="number"] {
     border-radius: 20px;
 }
 
+.goshop{
+    text-decoration: none;
+    background-color: #717FE0;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0 20px;
+}
+
+.goshop:hover{
+    background-color: #474997;
+}
+
 @media screen and (max-width: 768px) {
     .cart{
         flex-direction: column;

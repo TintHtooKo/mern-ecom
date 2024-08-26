@@ -1,0 +1,86 @@
+.person{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.p-btn{
+    width: 40%;
+}
+
+.p-btn button{
+    background-color: #3d4683;
+    color: rgb(180, 180, 180);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+.p-btn button:active{
+    transform: scale(0.98);
+}
+
+.p-btn button.active-btn{
+    background-color: #717FE0;
+    color: white;
+}
+
+.p-data{
+    width : 60%;
+}
+
+small{
+    color: rgb(128, 128, 128);
+}
+
+.p-edit{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.p-edit button{
+    background-color: #e6b000;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+
+.p-edit button:active{
+    transform: scale(0.93);
+}
+
+.p-detail div h5{
+    margin-bottom: 15px;
+}
+
+.product-checkout{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.action-checkout{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+    .p-btn{
+        width: 50%;
+    }
+
+    .p-data{
+        width: 50%;
+    }
+
+    .p-detail div h5{
+        font-size: 20px;
+    }
+}
+

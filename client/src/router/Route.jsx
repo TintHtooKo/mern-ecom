@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, useParams } from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import App from "../App"
 import Home from "../page/Home"
 import About from "../page/About"
@@ -13,6 +13,7 @@ import Checkout from "../page/Checkout"
 import Detail from "../page/Detail"
 import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
+import Profile from "../page/Profile"
 
 
 
@@ -69,6 +70,10 @@ export default function Route() {
             {
               path : '/register',
               element  : !user && <Register/>
+            },
+            {
+              path : '/profile',
+              element : user ? <Profile/> : <Login/>
             }
           ]
         }

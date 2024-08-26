@@ -120,7 +120,7 @@ export default function Cart() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="7" className="text-center">Your cart is empty</td>
+                  <td colSpan="7" className="text-center">Your cart is empty <Link className='goshop' to={'/shop'}>Continue Shopping</Link></td>
                 </tr>
               )}
             </tbody>

@@ -8,5 +8,6 @@ router.post('/create',AuthMiddleware,CheckoutController.create)
 router.get('/detail/:id',AuthMiddleware,CheckoutController.detail)
 router.patch('/update/:id',AuthMiddleware,CheckoutController.update)
 router.delete('/delete/:id',AuthMiddleware,CheckoutController.delete)
+router.get('/history',AuthMiddleware,CheckoutController.history)
 
-module.exports = router
+module.exports = router 

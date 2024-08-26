@@ -110,6 +110,7 @@ nav ul li a:hover{
 
 .cart i{
     position: absolute;
+    top:74px;
     font-size: 25px;
     cursor: pointer;
     color: black;
@@ -131,28 +132,17 @@ nav ul li a:hover{
     border-radius: 5px;
 }
 
-.wish i{
-    position: absolute;
+.user i{
     font-size: 25px;
     cursor: pointer;
     color: black;
     transition: 0.3s ease;
 }
 
-.wish i:hover{
+.user i:hover{
     color: #717FE0;
 }
 
-.wish p{
-    position: relative;
-    right: -25px;
-    top: -10px;
-    background-color: #717FE0;
-    color: white;
-    padding: 1px 4px;
-    font-size: 11px;
-    border-radius: 5px;
-}
 
 .mobile {
     display: none;
@@ -271,6 +261,10 @@ nav ul li a:hover{
         font-weight: 600;
     }
 
+    .cart i{
+        top:29px;
+    }
+
 }
 
 @media screen and (max-width: 425px) {
@@ -287,15 +281,19 @@ nav ul li a:hover{
     }
 
     .cart i{
-        font-size: 20px;
+        font-size: 22px;
     }
 
-    .wish i{
+    .user i{
         font-size: 22px;
     }
 
     .bar{
         font-size: 22px;
+    }
+
+    .cart i{
+        top:25px;
     }
 
     .mobile .mob-top{

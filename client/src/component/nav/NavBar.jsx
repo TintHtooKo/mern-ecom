@@ -6,7 +6,7 @@ import axios from '../../helper/axios';
 
 export default function NavBar() {
     let {user,dispatch,cartCount} = useContext(AuthContext)
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
     let navigate = useNavigate()
 
      const logoutHandler = async()=>{
@@ -64,10 +64,13 @@ export default function NavBar() {
                     <Link to={'/cart'}><i className="fa-solid fa-cart-shopping"></i></Link>
                     <p>{cartCount}</p>
                 </div>
-                {/* <div className='wish'>
-                    <Link to={'/wish'}><i className="fa-solid fa-heart"></i></Link>
-                    <p>0</p>
-                </div> */}
+                {
+                    user && (
+                        <div className='user'>
+                            <Link to={'/profile'}><i className="fa-solid fa-user"></i></Link>
+                        </div>
+                    )
+                }
                 <i className="fa-solid fa-bars bar" onClick={handleToggleMenu}></i>
             </div>
         </nav>
