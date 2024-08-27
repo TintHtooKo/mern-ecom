@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import './css/Profile.css'
 import axios from '../helper/axios'
-import Man from '../assets/men.webp'
-
 
 export default function Profile() {
   const [active,setActive] = useState('detail')
@@ -20,16 +18,16 @@ export default function Profile() {
   useEffect(()=>{
     let fetchCheckout = async()=>{
       let res = await axios.get('/checkout/history')
-      console.log(res.data);
       setCheckout(res.data)    
     }
     fetchCheckout()
   },[])
+
   
   return (
     <div>
       <h1 className=" ms-4 mb-5 fw-bold mt-5">User Profile</h1>
-      <div className="mt-5 mx-3">
+      <div className=" mt-5 mx-3">
         <div className="person">
           <div className='p-btn'>
             <button onClick={() => setActive('detail')} className={active === 'detail' ? 'active-btn' : ''}>Personal Data</button>
@@ -68,31 +66,35 @@ export default function Profile() {
                   <h2 className='fw-bold'>Checkout Products</h2>
                   <small>Don{"'"}t worry. Your data is safe with us. And only you can see it.</small>
                   {
-                    checkout.map((item) => (
-                      <div key={item._id} className="profile-checkout mt-5 w-75">
-                      {
-                        item.cartItems.map((cart)=>(
-                          <div key={cart._id} className='product-checkout mb-3'>
-                          <img
-                              src={import.meta.env.VITE_BACKEND_URL_ACCESS + cart.image}
-                              style={{ width: '50px' }}
-                              alt="Product"
-                          />
-                          <p>Qty: {cart.quantity}</p>
-                          <p>Price: ${cart.price}</p>
-                      </div>
-                        ))
-                      }
-
-                      <hr style={{ color: 'rgb(206, 206, 206)' }} />
-
-                      <div className='action-checkout'>
-                        <p>Checkout Date - {new Date(item.createdAt).toLocaleDateString()}</p>
-                        <p>Pending</p>
-                        <p className='fw-bold fs-5'>Total: ${item.totalPrice}</p>
-                      </div>
-                  </div>
-                    ))
+                    checkout.length > 0 ? (
+                      checkout.map((item) => (
+                        <div key={item._id} className="profile-checkout mt-5 w-75">
+                        {
+                          item.cartItems.map((cart)=>(
+                            <div key={cart._id} className='product-checkout mb-3'>
+                            <img
+                                src={import.meta.env.VITE_BACKEND_URL_ACCESS + cart.image}
+                                style={{ width: '50px' }}
+                                alt="Product"
+                            />
+                            <p>Qty: {cart.quantity}</p>
+                            <p>Price: ${cart.price * cart.quantity}</p>
+                            </div>
+                          ))
+                        }
+  
+                        <hr style={{ color: 'rgb(206, 206, 206)' }} />
+  
+                        <div className='action-checkout'>
+                          <p style={{ color: '#a0a0a0' }}>Checkout Date - {new Date(item.createdAt).toLocaleDateString()}</p>
+                          <p style={{ color: '#a0a0a0' }}>({item.action.name})</p>
+                          <p className='fw-bold fs-5'>Total: ${item.totalPrice}</p>
+                        </div>
+                        </div>
+                      ))
+                    ) : (
+                      <p style={{ color: '#a0a0a0' }} className='my-5 '>There is no purchased products</p>
+                    )
                   }
                 </div>
               )

@@ -98,6 +98,38 @@ const AddToCartController = {
             res.status(500).json({ message: 'Server error', error: error.message });
         }
     },
+
+    updateCartQuantity: async (req, res) => {
+        const { productId, quantity } = req.body;
+        try {
+          let cart = await Cart.findOne({ user: req.user._id });
+          console.log('Cart object:', cart);
+          console.log('Cart items:', cart.product);  // Log the correct property
+      
+          if (!cart) {
+            return res.status(404).json({ message: 'Cart not found' });
+          }
+      
+          // Initialize product array if undefined
+          if (!Array.isArray(cart.product)) {
+            cart.product = [];
+          }
+      
+          const itemIndex = cart.product.findIndex((item) => item.item.equals(productId));
+          
+          if (itemIndex >= 0) {
+            cart.product[itemIndex].quantity = quantity;
+            await cart.save();
+            return res.status(200).json({ message: 'Quantity updated successfully' });
+          } else {
+            return res.status(404).json({ message: 'Item not found in cart' });
+          }
+        } catch (error) {
+          console.error('Error updating quantity:', error);
+          return res.status(500).json({ message: 'Failed to update quantity', error });
+        }
+      }
+      
 };
 
 module.exports = AddToCartController;

@@ -19,11 +19,23 @@ const CheckoutSchema = new Schema({
         required : true
     },
     cartItems: [{
-        item: {
+        productId: {
             type: Schema.Types.ObjectId,
-            ref: "AddToCart", 
+            ref: "Product",  // Assuming you have a Product model
             required: true
         },
+        quantity: {
+            type: Number,
+            required: true
+        },
+        price: { 
+            type: Number, 
+            required: true 
+        },
+        image: { 
+            type: String, 
+            required: true 
+        } 
     }],
     action: {
         type: Schema.Types.ObjectId,

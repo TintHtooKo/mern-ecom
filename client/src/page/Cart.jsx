@@ -28,27 +28,43 @@ export default function Cart() {
     fetchCartItems();
   }, []);
 
+  const updateQuantityInDB = async (productId, quantity) => {
+    try {
+      await axios.post('/cart/update-cart-quantity', { productId, quantity });
+      updateCartCount()
+    } catch (error) {
+      console.error('Failed to update quantity:', error);
+    }
+  };
+    
+
+
   const increment = (productId) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
+    setCartItems((prevItems) => {
+      const updatedItems = prevItems.map((item) =>
         item.item._id === productId
           ? { ...item, quantity: item.quantity + 1 }
           : item
-      )
-    );
-    calculateTotal(cartItems);
+      );
+      calculateTotal(updatedItems);
+      return updatedItems;
+    });
+    updateQuantityInDB(productId, cartItems.find(item => item.item._id === productId).quantity + 1);
   };
-
+  
   const decrement = (productId) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
+    setCartItems((prevItems) => {
+      const updatedItems = prevItems.map((item) =>
         item.item._id === productId && item.quantity > 1
           ? { ...item, quantity: item.quantity - 1 }
           : item
-      )
-    );
-    calculateTotal(cartItems);
+      );
+      calculateTotal(updatedItems);
+      return updatedItems;
+    });
+    updateQuantityInDB(productId, cartItems.find(item => item.item._id === productId).quantity - 1);
   };
+  
 
   const calculateTotal = (items) => {
     const total = items.reduce((sum, item) => sum + item.quantity * item.item.new_price, 0);
@@ -95,7 +111,7 @@ export default function Cart() {
             </thead>
             <tbody>
               {!!cartItems.length > 0 ? (
-                cartItems.map((item) => (
+                cartItems.map((item) => ( 
                   <tr key={item.item._id}>
                     <th scope="row">
                       <img src={import.meta.env.VITE_BACKEND_URL_ACCESS + item.item.image} alt={item.item.name} />
