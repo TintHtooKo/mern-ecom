@@ -41,7 +41,7 @@ small{
     justify-content: space-between;
 }
 
-.p-edit button{
+.p-edit a{
     background-color: #e6b000;
     border: none;
     border-radius: 5px;
@@ -51,7 +51,7 @@ small{
 }
 
 
-.p-edit button:active{
+.p-edit a:active{
     transform: scale(0.93);
 }
 

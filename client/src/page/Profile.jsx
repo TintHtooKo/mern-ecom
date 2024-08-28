@@ -1,20 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import './css/Profile.css'
 import axios from '../helper/axios'
+import { AuthContext } from '../context/AuthContext'
 
 export default function Profile() {
+  let {user} = useContext(AuthContext)
   const [active,setActive] = useState('detail')
-  const [userData,setUserData] = useState({})
   const [checkout,setCheckout] = useState([])
-
-  useEffect(()=>{
-    let fetchUser = async()=>{
-      let res = await axios.get('/user/me')   
-      setUserData(res.data)
-    }
-    fetchUser()
-  },[])
-
+  let navigate = useNavigate()
+  let userData = user?.user;
+  
   useEffect(()=>{
     let fetchCheckout = async()=>{
       let res = await axios.get('/checkout/history')
@@ -22,6 +18,15 @@ export default function Profile() {
     }
     fetchCheckout()
   },[])
+
+  let updateClick = async() =>{
+    if (userData && userData._id) {
+      navigate(`/update/profile/${userData._id}`);
+      console.log("User ID:", userData._id);
+    } else {
+      console.log("User ID is not available.");
+    }    
+  }
 
   
   return (
@@ -44,9 +49,9 @@ export default function Profile() {
                     <div className='p-edit'>
                       <div></div>
                       <div>
-                      <button>
+                      <Link onClick={updateClick}>
                         <i className='fa-solid fa-pen'></i>
-                      </button>
+                      </Link>
                       </div>
                     </div>
                     <div>

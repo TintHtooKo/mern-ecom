@@ -14,13 +14,16 @@ import Detail from "../page/Detail"
 import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
 import Profile from "../page/Profile"
+import AdminHome from "../admin/page/AdminHome"
+import UpdateProfile from "../page/updateProfile"
 
 
 
 
 export default function Route() {
   let {user} = useContext(AuthContext)
-
+  const isAdmin = user?.user?.role?.name === 'Admin'
+  
 
     const router = createBrowserRouter([
         {
@@ -74,6 +77,14 @@ export default function Route() {
             {
               path : '/profile',
               element : user ? <Profile/> : <Login/>
+            },
+            {
+              path : '/admin',
+              element : isAdmin ? <AdminHome/> : <Login/>
+            },
+            {
+              path : '/update/profile/:id',
+              element : <UpdateProfile/>
             }
           ]
         }

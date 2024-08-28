@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './NavBar.css'
-import {  useContext, useState } from 'react';
+import {  useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import axios from '../../helper/axios';
 
@@ -8,6 +8,9 @@ export default function NavBar() {
     let {user,dispatch,cartCount} = useContext(AuthContext)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
     let navigate = useNavigate()
+    let userRole = user?.user?.role?.name
+
+
 
      const logoutHandler = async()=>{
         try {
@@ -37,14 +40,20 @@ export default function NavBar() {
   return (
     <div>
         <div className='top'>
-            <p className=' mt-3'>Free shipping for standard order over $100</p>
+            <p className=' mt-3'>Free shipping for standard order over $100 </p>
             <ul className=' mt-2'>
-                <li><Link>Help & FAQs</Link></li>
+                {
+                    userRole === 'Admin' && (
+                        <li><Link to={'/admin'}>Admin</Link></li>
+                    )
+                }
                 {
                     !user ? (
                         <li><Link to='/login'>Login</Link></li>
                     ) : (
+                        <>
                         <li><button onClick={logoutHandler}>Logout</button></li>
+                        </>
                     )
                 }
                     
@@ -80,7 +89,11 @@ export default function NavBar() {
                 <p className=' mt-3'>Free shipping for standard order over $100</p>
                 <hr />
                 <ul>
-                    <li><Link onClick={handleCloseMenu}>Help & FAQs</Link></li>
+                    {
+                         userRole === 'Admin' &&(
+                            <li><Link to={'/admin'} onClick={handleCloseMenu}>Admin</Link></li>
+                        )
+                    }
                     {
                         !user ? (
                             <li><Link onClick={handleCloseMenu} to={'/login'}>Login</Link></li>

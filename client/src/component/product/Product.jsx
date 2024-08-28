@@ -38,6 +38,10 @@ export default function Product({ categoryId }) {
     }
   }
 
+  const scrollClick = () =>{
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
   const handleCloseAlert = () => {
     setShowAlert(false); // Close the alert
 };
@@ -58,7 +62,7 @@ export default function Product({ categoryId }) {
               <div className='butt'>
                   <button onClick={() => handleAddToCart(item._id)}><i className='fa fa-shopping-cart'></i></button>
                   {/* <button><i className='fa fa-heart'></i></button> */}
-                  <NavLink to={`/detail/${item._id}`}><i className='fa fa-eye'></i></NavLink>
+                  <NavLink onClick={scrollClick} to={`/detail/${item._id}`}><i className='fa fa-eye'></i></NavLink>
               </div>
           </div>
           )

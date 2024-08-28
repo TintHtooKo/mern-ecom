@@ -9,10 +9,12 @@ const AuthReducer = (state, action) => {
             localStorage.setItem("user", JSON.stringify(action.payload));
             return { user: action.payload, cartCount : action.payload.cartCount };
         case "LOGOUT":
-            localStorage.removeItem("user");
+            localStorage.removeItem("user"); 
             return { user: null, cartCount : 0 };
         case "UPDATE_CART_COUNT":   
             return { ...state, cartCount: action.payload };
+        case 'UPDATE_USER':
+            return { ...state, user: { ...state.user, user: action.payload } };
         default:
             return state;
     }
@@ -20,31 +22,28 @@ const AuthReducer = (state, action) => {
 
 const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AuthReducer, {
-        user: JSON.parse(localStorage.getItem("user")) || null,
+        user:  null,
         cartCount : 0
     });
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const res = await axios.get('/user/me');
-                const user = res.data;
-                // console.log('fetch user',user);
-                   
-                if (user) {
-                    dispatch({ type: "LOGIN", payload: user });
-                    const cartRes = await axios('/cart/count');
-                    dispatch({ type: "UPDATE_CART_COUNT", payload: cartRes.data.count });
-                } else {
-                    dispatch({ type: "LOGOUT" });
-                }
-            } catch (error) {
-                dispatch({ type: "LOGOUT" });
-            }
-        };
 
-        fetchUser();
-    }, []);
+    useEffect(()=>{
+        let fetchUser = async()=>{
+            try {
+                let user = JSON.parse(localStorage.getItem('user'))
+            if(user){
+                dispatch({type : "LOGIN", payload : user})
+                const cartRes = await axios('/cart/count',{withCredentials:true});
+                dispatch({ type: "UPDATE_CART_COUNT", payload: cartRes.data.count });
+            }else{
+                dispatch({type : "LOGOUT"})
+            }
+            } catch (error) {
+                dispatch({type : "LOGOUT"})
+            }
+        }
+        fetchUser()
+    },[])
 
     const updateCartCount = async () => {
         try {
