@@ -1,0 +1,22 @@
+.ad-btn a{
+    background-color: yellow;
+    color: rgb(61, 60, 60);
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.ad-btn button{
+    border: none;
+    background-color: red;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.plus{
+    background-color: #717FE0;
+    color: white;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+

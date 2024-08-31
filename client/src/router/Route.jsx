@@ -16,6 +16,11 @@ import { AuthContext } from "../context/AuthContext"
 import Profile from "../page/Profile"
 import AdminHome from "../admin/page/AdminHome"
 import UpdateProfile from "../page/updateProfile"
+import UserAddEdit from "../admin/component/userList/UserAddEdit"
+import ProductAddEdit from "../admin/component/productList/ProductAddEdit"
+import CategoryAddEdit from "../admin/component/categoryList/CategoryAddEdit"
+import CheckoutDetail from "../admin/component/checkoutList/CheckoutDetail"
+import CheckoutEdit from "../admin/component/checkoutList/CheckoutEdit"
 
 
 
@@ -85,6 +90,38 @@ export default function Route() {
             {
               path : '/update/profile/:id',
               element : <UpdateProfile/>
+            },
+            {
+              path : '/adduser',
+              element : isAdmin ? <UserAddEdit/> : <Login/>
+            },
+            {
+              path : '/adduser/:id',
+              element : isAdmin ? <UserAddEdit/> : <Login/>
+            },
+            {
+              path : '/addproduct',
+              element : isAdmin ? <ProductAddEdit/> : <Login/>
+            },
+            {
+              path : '/addproduct/:id',
+              element : isAdmin ? <ProductAddEdit/> : <Login/>
+            },
+            {
+              path : '/addcategory',
+              element : isAdmin ? <CategoryAddEdit/> : <Login/>
+            },
+            {
+              path : '/addcategory/:id',
+              element : isAdmin ? <CategoryAddEdit/> : <Login/>
+            },
+            {
+              path : '/checkout-detail/:id',
+              element : isAdmin ? <CheckoutDetail/> : <Login/>
+            },
+            {
+              path : '/checkout-action/:id',
+              element : isAdmin ? <CheckoutEdit/> : <Login/>
             }
           ]
         }

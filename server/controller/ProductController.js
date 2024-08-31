@@ -61,6 +61,11 @@ const ProductController = {
     
 
             let data = await Product.findByIdAndUpdate(id, { ...req.body }, { new: true });
+
+            if (req.file) {
+                await removeFile(__dirname + '/../public' + product.image);
+                data.image = '/' + req.file.filename;
+            }
     
             return res.status(200).json({data, message : "Product Updated"});
         } catch (error) {

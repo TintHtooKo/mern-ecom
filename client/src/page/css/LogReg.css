@@ -59,6 +59,18 @@
     margin: 10px 0;
 }
 
+.login form textarea{
+    width: 400px;
+    height: 200px;
+    outline: none;
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 1px solid rgb(216, 216, 216);
+    border-right: 1px solid rgb(216, 216, 216);
+    border-radius: 30px;
+    margin: 10px 0;
+}
+
 .login form button{
     width: 300px;
     border: none;
@@ -72,8 +84,16 @@
     gap: 20px;
 }
 
+.login form .file{
+    border: none;
+}
+
 @media screen and (max-width: 425px) {
     .login form input{
+        width: 300px;
+    }
+
+    .login form textarea{
         width: 300px;
     }
 

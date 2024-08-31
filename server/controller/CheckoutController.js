@@ -78,7 +78,7 @@ const CheckoutController = {
             if(!mongoose.Types.ObjectId.isValid(id)){
                 return res.status(400).json({message : "Invalid Id"})
             }
-            let checkout = await Checkout.findById(id)
+            let checkout = await Checkout.findById(id).populate('action').populate('payment').populate('cartItems.productId')
             if(!checkout){
                 return res.status(404).json({message : "Checkout Not Found"})
             }
@@ -97,7 +97,7 @@ const CheckoutController = {
             if(!checkout){
                 return res.status(404).json({message : "Checkout Not Found"})
             }
-            checkout = await Checkout.findByIdAndUpdate(id,{...req.body},{new : true})
+            checkout = await Checkout.findByIdAndUpdate(id,{...req.body},{new : true}).populate('action')
             return res.status(200).json(checkout)
         } catch (error) {
             return res.status(500).json({ error: error.message })
@@ -125,7 +125,7 @@ const CheckoutController = {
             const userId = req.user._id; 
             console.log('User ID:', userId); 
             const checkout = await Checkout.find({userId}).populate('action')
-            console.log(checkout);
+            // console.log(checkout);
             
             if(!checkout || checkout.length == 0){
                 return res.status(404).json({message : "Checkout Not Found"})

@@ -89,6 +89,10 @@ export default function Cart() {
       console.error("Error removing product from cart:", error);
     }
   };
+
+  const handleScroll = () =>{
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+  }
   
   
 
@@ -153,7 +157,7 @@ export default function Cart() {
           <span>Total - ${totalPrice}</span>
 
           {/* cartItem နဲ့ totalPrice ကို checkout page ထဲ ခေါ်ဖို့ */}
-          <Link to="/checkout" state={{ cartItems, totalPrice }}>Checkout</Link>
+          <Link to="/checkout" onClick={handleScroll} state={{ cartItems, totalPrice }}>Checkout</Link>
         </div>
       </div>
     </>

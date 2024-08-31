@@ -1,0 +1,34 @@
+.checkdetail{
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+}
+
+.c-detail{
+    width: 40%;
+}
+
+@media screen and (max-width: 768px) {
+    .checkdetail .c-detail h2,.c-product h2{
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .checkdetail{
+        flex-direction: column;
+        margin: 0 10px;
+        gap: 50px;
+    }
+
+    .c-detail{
+        width: 100%;
+    }
+
+    .c-product{
+        width: 100%;
+    }
+    .checkdetail .c-detail h2,.c-product h2{
+        font-size: 20px;
+    }
+}

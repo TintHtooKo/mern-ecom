@@ -28,6 +28,25 @@ export default function Profile() {
     }    
   }
 
+  function formatDate(createdAt) {
+    const date = new Date(createdAt);
+    const now = new Date();
+    
+    // Calculate the difference in days
+    const diffInTime = now.getTime() - date.getTime();
+    const diffInDays = Math.floor(diffInTime / (1000 * 3600 * 24));
+    
+    if (diffInDays === 0) {
+        return 'Today';
+    } else if (diffInDays === 1) {
+        return 'Yesterday';
+    } else if (diffInDays <= 4) {
+        return `${diffInDays} days ago`;
+    } else {
+        return date.toLocaleDateString();
+    }
+}
+
   
   return (
     <div>
@@ -91,7 +110,7 @@ export default function Profile() {
                         <hr style={{ color: 'rgb(206, 206, 206)' }} />
   
                         <div className='action-checkout'>
-                          <p style={{ color: '#a0a0a0' }}>Checkout Date - {new Date(item.createdAt).toLocaleDateString()}</p>
+                          <p style={{ color: '#a0a0a0' }}>Checkout Date - {formatDate(item.createdAt)}  </p>
                           <p style={{ color: '#a0a0a0' }}>({item.action.name})</p>
                           <p className='fw-bold fs-5'>Total: ${item.totalPrice}</p>
                         </div>

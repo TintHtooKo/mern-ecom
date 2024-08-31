@@ -1,0 +1,50 @@
+.ad-nav{
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+}
+
+.ad-nav button{
+    border: none;
+    padding: 5px;
+    margin: 0 10px;
+    background-color: #3d4683;
+    color: rgb(180, 180, 180);
+    border-radius: 5px;
+    width: 200px;
+}
+
+.ad-nav button:active{
+    transform: scale(0.98);
+}
+
+.ad-nav button.active-btn{
+    background-color: #717FE0;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .ad-nav{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .ad-nav button{
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .ad-nav{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .ad-nav button{
+        width: 150px;
+        margin: 0;
+        gap: 0;
+    }
+}   
+
+
+
