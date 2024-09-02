@@ -1,6 +1,18 @@
 const mongoose = require("mongoose");
 const Product = require('../model/Product');
 const removeFile = require("../helper/removeFile");
+const sendEmail = require("../helper/sendEmail");
+const User = require("../model/User");
+const { login } = require("./UserController");
+
+// mail send tr nrr ma lae yin creativecodermm ko pyan ky
+// mail send yin ma kyr ag
+// const Queue = require('bull')
+// const emailQueue = new Queue('emailQueue', { redis: { port: 6379, host: '127.0.0.1' } }); 
+// emailQueue.process(async (job) => {    
+//     await sendEmail(job.data) 
+// })
+
 
 const ProductController = {
     index: async (req, res) => {
@@ -11,10 +23,9 @@ const ProductController = {
             if (req.query.category) {
                 query.category = new mongoose.Types.ObjectId(req.query.category);
             }
-
             // Find products based on the query (with or without category filter)
             let products = await Product.find(query).populate('category');
-            return res.json(products);
+            return res.json(products);           
         } catch (error) {
             return res.status(500).json({ error: error.message });
         }
@@ -25,8 +36,34 @@ const ProductController = {
         try {
             let {name,old_price,new_price,short_desc,long_desc,category} = req.body
             let product = await Product.create({name,old_price,new_price,short_desc,long_desc,category})
+
+            // send mail to user when added new product (marketing email)
+            // email ma htoke htr yin user ye all data paw nay mal, password pr paw nay loh
+            let users = await User.find(null,['email'])
+
+            // apaw ka users ko console htoke kyi yin user object nae email ya mal
+            // emails only pal array nae lo chin loh user ko map pat p eamil ko htoke lite tal
+            let emails = users.map((user)=>(user.email))
+            
+            // dr ka email po yin koe mail ko pyan ma send ag
+            emails = emails.filter(email => email !== req.user.email)
+            sendEmail({
+                view : 'email',
+                data : {
+                    name : req.user.fullname,
+                    product
+                },
+                // login lote htr tae user ka send mhr so tot req.user.email
+                from : req.user.email,
+                to : emails ,
+                subject : 'New Product is Listing!!!',
+            
+                })
+              
             return res.status(200).json(product)
         } catch (error) {
+            console.log(error.message);
+            
             return res.status(500).json({ error: error.message });
         }
     },

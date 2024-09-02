@@ -14,7 +14,7 @@ const UserController = {
             let user = await User.register(fullname,email,address,phone,password,role)
             let token = createToken(user._id)
             res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
-            return res.status(200).json({user,token})
+            return res.status(200).json({user,token}) 
 
         } catch (error) {
             return res.status(500).json({ error: error.message });
